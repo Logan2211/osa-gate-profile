@@ -1,0 +1,5 @@
+Generate metrics from openstack-ansible gate check console logs.
+
+- step1: fetchlogs.php
+- step2: parselogs.php
+- step3: generatereports.php
