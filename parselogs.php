@@ -24,8 +24,8 @@ pcntl_signal(SIGINT,  function($signo) {
 foreach ($dir as $f) {
   if (!$f->isFile()) continue;
   $c = file_get_contents('dump/'.$f);
-  if (!preg_match('/Building remotely on <a .*>([^<]+)-[0-9]+<\/a>/', $c, $m)) {
-    echo "Failed to find node type of $f\n";
+  if (!preg_match('/Building remotely on (?:<a .*>)?([^<\s]+)-[0-9]+(?:<\/a>)?/', $c, $m)) {
+    file_put_contents("php://stderr", "Failed to find node type of $f\n");
     continue;
   }
   $nodetype = $m[1];
